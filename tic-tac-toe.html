@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // CREATE variable for computer choice
+        // CREATE variable for human choice
+        // CREATE variable for computer score
+        // CREATE variable for human score
+
+        // WHILE computer score < 3 AND human score < 3, 
+        //     RANDOMISE 'rock' 'paper' or 'scissors' and assign to computer and 
+        //     PROMPT for human input for 'rock' 'paper' or 'scissors'
+
+        //     IF (computer choice is rock AND human choice is scissors) OR
+        //         IF (computer choice is scissors AND human choice is paper) OR
+        //         IF (computer choice is paper AND human choice is rock)
+        //         INCREASE computer score by 1
+        //     ELSE IF computer score != human score
+        //         INCREASE human score by 1
+        
+        //     DISPLAY current score
+
+        // IF computer score is 3
+        //     ANNOUNCE computer winner
+        // ELSE ANNOUNCE human winner
+
+        let cpuScore = 0
+        let hmnScore = 0;
+        let cpuChoice;
+        let hmnChoice;
+
+        function getComputerChoice() {
+            let choices = ['rock', 'paper', 'scissors']; // Create an array of items
+            let randomChoice = Math.floor(Math.random() * choices.length); // Assigns a variable to a random item in the choices array
+            let cpuChoice = choices[randomChoice]; // Assigns the computer choice to the randomised choice
+            return cpuChoice;
+        }
+        
+        function getHumanChoice() {
+            let hmnChoice = prompt("Rock, Paper or Scissors?").toLowerCase();
+            return hmnChoice;
+        }
+     
+        function playRound(humanChoice, computerChoice) {
+            while (cpuScore < 3 && hmnScore < 3) {
+                cpuChoice = getComputerChoice();
+                hmnChoice = getHumanChoice();
+            
+            if (cpuChoice == "rock" && hmnChoice == "scissors"
+                || cpuChoice == "scissors" && hmnChoice == "paper"
+                || cpuChoice == "paper" && hmnChoice == "rock"
+            ) cpuScore++;
+            else if (cpuChoice != hmnChoice
+            ) hmnScore++;
+
+            console.log(`CPU played ${cpuChoice} and you played ${hmnChoice}`)
+            console.log(`CPU score is ${cpuScore} and human score is ${hmnScore}`)
+        }
+
+            if (cpuScore == 3) {
+                alert("CPU wins!")
+                console.log("CPU wins!")
+            } else if (hmnScore == 3) {
+                alert("You win!")
+                console.log("You win!")
+            }
+        }
+
+        const computerSelection = getComputerChoice()
+        const humanSelection = getHumanChoice()
+
+        playRound(humanSelection, computerSelection)
+
+        
+
+    </script>
+</body>
+</html>
